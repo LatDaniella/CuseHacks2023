@@ -1,149 +1,1020 @@
 import random
-
+from tkinter import *
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from pathlib import Path
 
 class Level18:
     def __init__(self, level):
         self.level = level
 
+    def start_screen(self, points):
+        OUTPUT_PATH = Path(__file__).parent
+        ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/gianna/Documents/untitled folder 4/build/assets/frame0")
+
+
+        def relative_to_assets(path: str) -> Path:
+            return ASSETS_PATH / Path(path)
+
+
+        window = Tk()
+
+        window.geometry("333x600")
+        window.configure(bg = "#FFFFFF")
+
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 333,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            166.0,
+            333.0,
+            image=image_image_1
+        )
+
+        canvas.create_rectangle(
+            0.0,
+            430.0,
+            333.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: window.destroy(),
+            relief="flat"
+        )
+        button_1.place(
+            x=50.0,
+            y=486.0,
+            width=224.0,
+            height=47.0
+        )
+
+        canvas.create_text(
+            33.0,
+            44.0,
+            anchor="nw",
+            text="Money Madness",
+            fill="#5CD685",
+            font=("MontserratRoman ExtraBold", 24 * -1)
+        )
+        window.resizable(False, False)
+        window.mainloop()
+
+        window.destroy()
+        return points
+
+
+
+
     def college_choice(self, points):
-        print("You have the choice between Syracuse and Cornell. Syracuse is offering\n"
-              "to give you half off for tuition, while Cornell is full price.")
-        x = input("Which college will you chose to attend? ")
-        while x not in ["S", "C", "Syracuse", "Cornell"]:
-            print("Invalid answer. Try again.")
-        if x in ["S", "Syracuse"]:
-            print("This option is a very financially beneficial decision. +10 points")
-            points += 10
-        else:
-            print("This option is not the most financially beneficial decision, but\n"
-                  "there are a lot of other factors when it comes to picking colleges.\n"
-                  "It just matters how you plan to pay for college without getting into\n"
-                  "too much debt. -10 points")
-            points -= 10
+
+        x = 0
+        OUTPUT_PATH = Path(__file__).parent
+        ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/gianna/Documents/untitled folder 2/build/assets/frame0")
+
+        window = Tk()
+
+        window.geometry("335x600")
+        window.configure(bg = "#FFFFFF")
+
+        def relative_to_assets(path: str) -> Path:
+            return ASSETS_PATH / Path(path)
+
+        def o1(num):
+
+            canvas = Canvas(
+                window,
+                bg = "#FFFFFF",
+                height = 600,
+                width = 335,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge"
+            )
+
+            canvas.place(x = 0, y = 0)
+            button_image_next = PhotoImage(
+            file=relative_to_assets("button_next.png"))
+            button_next = Button(
+                image=button_image_next,
+                borderwidth=0,
+                highlightthickness=0,
+                command=lambda: self.bank_loan(points),
+                relief="flat"
+            )
+            button_next.place(
+                x=48.0,
+                y=474.0,
+                width=83.0,
+                height=81.0
+            )
+
+            if num == 1:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="This option is a very financially beneficial decision. +10 points",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points += 10
+                
+            else:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text=("This option is not the most financially beneficial decision, but here are a lot of other factors when it comes to picking colleges."
+                    " It just matters how you plan to pay for college without getting into "
+                    "too much debt. -10 points"),
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify="left",
+                width = 250
+                )
+                points -= 10
+
+            window.resizable(False, False)
+            window.mainloop()
+            return points
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.create_rectangle(
+            0.0,
+            430.0,
+            335.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        canvas.create_rectangle(
+            0.0,
+            234.0,
+            335.0,
+            430.0,
+            fill="#FFFFFF",
+            outline="")
+
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            167.0,
+            332.0,
+            image=image_image_1
+        )
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(1),
+            relief="flat"
+        )
+        button_1.place(
+            x=48.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+    
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("button_2.png"))
+        button_2 = Button(
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(2),
+            relief="flat",
+        )
+        button_2.place(
+            x=192.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        canvas.create_text(
+            59.0,
+            47.0,
+            anchor="nw",
+            text="You have the choice between Syracuse and Cornell. Syracuse is offering\n"
+              "to give you half off for tuition, while Cornell is full price.\n"
+                "Which college will you chose to attend? 1. Syracuse 2. Cornell",
+            fill="#000000",
+            font=("MontserratRoman ExtraBold", 18 * -1),
+            justify= "left",
+            width = 250
+        )
+
+
+        window.resizable(False, False)
+        window.mainloop()
+
+        window.destroy()
 
         return points
 
     
+    
 
     def bank_loan(self, points):
-            print("To pay for your college, you would need an education loan \
-              Bank A offers a loan of $50,000 at the fixed interest rate of 6.37% to be payed over the span of 6 years \
-            Bank B offers a loan of $60,000 at the fixed interest rate of 4.2% to be payed over the span of 6 years"
-              )
+            
+        OUTPUT_PATH = Path(__file__).parent
+        ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/gianna/Documents/untitled folder 2/build/assets/frame2")
 
-            user_choice = input("which bank's loan would be more beneficial? Hint: look at interest rates -> ")
-            while user_choice not in "A" or "B" or "Bank A" or "Bank B":
-                print("Invalid. go again")
-                print(user_choice)
-            if user_choice == "A" or user_choice == "Bank A":
-                print("Good Job!")
-                points += 10
+
+        def relative_to_assets(path: str) -> Path:
+            return ASSETS_PATH / Path(path)
+
+
+        def o1(num):
+            canvas = Canvas(
+                window,
+                bg = "#FFFFFF",
+                height = 600,
+                width = 335,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge"
+            )
+
+            canvas.place(x = 0, y = 0)
+            canvas.place(x = 0, y = 0)
+            button_image_next = PhotoImage(
+            file=relative_to_assets("button_next.png"))
+            button_next = Button(
+                image=button_image_next,
+                borderwidth=0,
+                highlightthickness=0,
+                command=lambda: self.bank_account(points),
+                relief="flat"
+            )
+            button_next.place(
+                x=48.0,
+                y=474.0,
+                width=83.0,
+                height=81.0
+            )
+
+            if num == 1:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Good Job! +10 points",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+
             else:
-                print("Unfortunately the total repayment amount is higher for Loan B")
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Unfortunately the total repayment amount is higher for Loan 2",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
                 points -= 10
-            print("First convert the interest rate percentage to decimal. Then, find the total interest paid by multiplying \
-              the loan amount with the interest rate and \
-              repayment period of 5 years \
-              Finally, find the total repayment by adding the loan amount and the total interest paid")
 
-            return points
+        window = Tk()
+
+        window.geometry("335x600")
+        window.configure(bg = "#FFFFFF")
+
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.create_rectangle(
+            0.0,
+            430.0,
+            335.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        canvas.create_text(
+            59.0,
+            47.0,
+            anchor="nw",
+            text=("To pay for your college, you would need an education loan"
+            "Bank 1 offers a loan of $50,000 at the fixed interest rate of 6.37% to be payed over the span of 6 years"
+            "Bank 2 offers a loan of $60,000 at the fixed interest rate of 4.2% to be payed over the span of 6 years"
+            "which bank's loan would be more beneficial? Hint: look at interest rates."
+            
+            ),
+            fill="#000000",
+            font=("MontserratRoman ExtraBold", 18 * -1)
+        )
+
+        canvas.create_rectangle(
+            209.0,
+            13.0,
+            309.0,
+            113.0,
+            fill="#000000",
+            outline="")
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(1),
+            relief="flat"
+        )
+        button_1.place(
+            x=193.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("button_2.png"))
+        button_2 = Button(
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(2),
+            relief="flat"
+        )
+        button_2.place(
+            x=59.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            169.0,
+            356.0,
+            image=image_image_1
+        )
+        window.resizable(False, False)
+        window.mainloop()
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="First convert the interest rate percentage to decimal. Then, find the total interest paid by multiplying"
+                    "the loan amount with the interest rate and"
+                    "repayment period of 5 years"
+                    "Finally, find the total repayment by adding the loan amount and the total interest paid",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+            )
+
+        return points
 
         # Loan A is better in terms of minimizing the total repayment amount
 
+
+
     def bank_account(self, points):
-        print("You just started a job and now you are earning money.")
-        x = input("Would you like to open a bank account?")
-        while x not in ["yes", "Yes", "y", "Y", "YES", "no", "No", "n", "N", "NO"]:
-            print("Invalid response. Try again.")
-            x = input()
-        if x in ["yes", "Yes", "y", "Y", "YES"]:
-            print("Correct! Opening a bank account allows you to keep your maney safe, the money is protected\n" 
-                  "from error and fraud, and make online purchases with ease.")
-            points += 10
-        else:
-            print("That's not best choice. Opening a bank account allows you to keep your maney safe, the money\n" 
-            "is protected from error and fraud, and make online purchases with ease.")
-            points -= 10
+        OUTPUT_PATH = Path(__file__).parent
+        ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/gianna/Documents/untitled folder 2/build/assets/frame5")
+
+
+        def relative_to_assets(path: str) -> Path:
+            return ASSETS_PATH / Path(path)
+
+        def o1(num):
+            canvas = Canvas(
+                window,
+                bg = "#FFFFFF",
+                height = 600,
+                width = 335,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge"
+            )
+
+            canvas.place(x = 0, y = 0)
+            button_image_next = PhotoImage(
+            file=relative_to_assets("button_next.png"))
+            button_next = Button(
+                image=button_image_next,
+                borderwidth=0,
+                highlightthickness=0,
+                command=lambda: self.budgeting(points),
+                relief="flat"
+            )
+            button_next.place(
+                x=48.0,
+                y=474.0,
+                width=83.0,
+                height=81.0
+            )
+
+            canvas.place(x = 0, y = 0)
+            if num == 2:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Correct! Opening a bank account allows you to keep your maney safe, the money is protected\n" 
+                  "from error and fraud, and make online purchases with ease.",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points += 10
+            
+            else:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="That's not best choice. Opening a bank account allows you to keep your maney safe, the money\n" 
+                "is protected from error and fraud, and make online purchases with ease.",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points -= 10
+
+
+
+        window = Tk()
+
+        window.geometry("335x600")
+        window.configure(bg = "#FFFFFF")
+
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.create_text(
+            59.0,
+            47.0,
+            anchor="nw",
+            text="You just started a job and now you are earning money. Would you like to open a bank account? 1. No 2. Yes",
+            fill="#000000",
+            font=("MontserratRoman ExtraBold", 18 * -1)
+        )
+
+        canvas.create_rectangle(
+            0.0,
+            427.0,
+            335.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: print("button_1 clicked"),
+            relief="flat"
+        )
+        button_1.place(
+            x=209.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("button_2.png"))
+        button_2 = Button(
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: print("button_2 clicked"),
+            relief="flat"
+        )
+        button_2.place(
+            x=42.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            167.0,
+            341.0,
+            image=image_image_1
+        )
+        window.resizable(False, False)
+        window.mainloop()
 
         return points
     
     def budgeting(self, points):
-            display_text = ("You cracked your phone screen! Do you (1) buy the newest phone for $1000 "
-                            "or (2) go with last year's model for $500 and save the rest?")
 
-            i = input(display_text)
-            print(i)
-            while i not in ["1","2"]:
-                print(i)
-            if i == "1":
-                display_text = ("That might not have been the best choice :("
-                                "when it comes to budgeting, it's important to know the difference between"
-                                "items that are wants and items that are needs! -5 points")
+        OUTPUT_PATH = Path(__file__).parent
+        ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/gianna/Documents/untitled folder 2/build/assets/frame8")
 
-                print(display_text)
-                points -= 5
-            elif i == "2":
-                display_text = "good choice! that was good budgeting. +5 point!"
+
+        def relative_to_assets(path: str) -> Path:
+            return ASSETS_PATH / Path(path)
+
+        def o1(num):
+            canvas = Canvas(
+                window,
+                bg = "#FFFFFF",
+                height = 600,
+                width = 335,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge"
+            )
+
+            canvas.place(x = 0, y = 0)
+            canvas.place(x = 0, y = 0)
+            button_image_next = PhotoImage(
+            file=relative_to_assets("button_next.png"))
+            button_next = Button(
+                image=button_image_next,
+                borderwidth=0,
+                highlightthickness=0,
+                command=lambda: self.credit(points),
+                relief="flat"
+            )
+            button_next.place(
+                x=48.0,
+                y=474.0,
+                width=83.0,
+                height=81.0
+            )
+            if num == 1:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="good choice! that was good budgeting. +5 point!",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
                 points += 5
-                print(display_text)
-
-
-            display_text2 = ("Your car is in the shop so you can't take it to work today. "
-                            "Do you (1) take the subway for $2.90 or (2) take an Uber for $30")
-            y = input(display_text2)
-            print(y)
-            while y not in ["1","2"]:
-                print(y)
-            if y == "1":
-                display_text2 = "good choice! that was good budgeting. +5 point!"
-                points += 5
-                print(display_text2)
-
-
+            
             else:
-                display_text2 = ("That might not have been the best choice :("
-                                "when it comes to budgeting, it's important to know the difference between"
-                                "items that are wants and items that are needs! -5 points")
-                points -= 5
-                print(display_text2)
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="That might not have been the best financial choice, but there are many factors to deciding your transportation! -3 points",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points -= 3
 
-            return points
+
+        window = Tk()
+
+        window.geometry("335x600")
+        window.configure(bg = "#FFFFFF")
+
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.create_rectangle(
+            0.0,
+            430.0,
+            335.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(1),
+            relief="flat"
+        )
+        button_1.place(
+            x=209.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("button_2.png"))
+        button_2 = Button(
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(2),
+            relief="flat"
+        )
+        button_2.place(
+            x=42.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        canvas.create_text(
+            59.0,
+            45.0,
+            anchor="nw",
+            text="Your car is in the shop so you can't take it to work today. "
+                "Do you (1) take the subway for $2.90 or (2) take an Uber for $30",
+            fill="#000000",
+            font=("MontserratRoman ExtraBold", 18 * -1)
+        )
+
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            227.0,
+            330.0,
+            image=image_image_1
+        )
+        window.resizable(False, False)
+        window.mainloop()
+
+
+        return points
 
 
     def credit(self, points):
-        # question 1
-        x = input("Do you want to apply for a credit card?")
-        while x not in ["yes", "Yes", "y", "Y", "YES", "no", "No", "n", "N", "NO"]:
-            print("Invalid response. Try again.")
-            x = input()
-        if x in ["yes", "Yes", "y", "Y", "YES"]:
-            print("Yes! Building your credit can create oppertunities for getting low-interest\n"
+
+        OUTPUT_PATH = Path(__file__).parent
+        ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/gianna/Documents/untitled folder 2/build/assets/frame6")
+
+        def relative_to_assets(path: str) -> Path:
+            return ASSETS_PATH / Path(path)
+
+        def o1(num):
+            canvas = Canvas(
+                window,
+                bg = "#FFFFFF",
+                height = 600,
+                width = 335,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge"
+            )
+
+            canvas.place(x = 0, y = 0)
+            if num == 2:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Yes! Building your credit can create oppertunities for getting low-interest"
                   "on mortgages, personal loans/credit cards, and end up paying less money during\n" 
                   "the term of your loan and have more of savings. The younger you start, the more\n"
-                  "benifical it will be.")
-            points += 5
-        else:
-            print("This is not the best choice. Building your credit can create oppertunities for\n"
-                  "getting low-interest on mortgages, personal loans/credit cards, and end up paying\n"
-                  "less money during the term of your loan and have more of savings. If you have more\n"
-                  "money for savings, you can use it to invest in your future.")
-            points -= 5
+                  "benifical it will be.",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points += 5
+            
+            else:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="This is not the best choice. Building your credit can create oppertunities for"
+                  "getting low-interest on mortgages, personal loans/credit cards, and end up paying"
+                  "less money during the term of your loan and have more of savings. If you have more"
+                  "money for savings, you can use it to invest in your future.",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points -= 5
+
+
+        window = Tk()
+
+        window.geometry("335x600")
+        window.configure(bg = "#FFFFFF")
+
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.place(x = 0, y = 0)
+        button_image_next = PhotoImage(
+        file=relative_to_assets("button_next.png"))
+        button_next = Button(
+            image=button_image_next,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: print(points),
+            relief="flat"
+        )
+        button_next.place(
+            x=48.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        canvas.create_rectangle(
+            0.0,
+            430.0,
+            335.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(1),
+            relief="flat"
+        )
+        button_1.place(
+            x=42.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("button_2.png"))
+        button_2 = Button(
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o1(2),
+            relief="flat"
+        )
+        button_2.place(
+            x=209.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Do you want to apply for a credit card? 1. No 2. Yes",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+        
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            167.0,
+            358.0,
+            image=image_image_1
+        )
+
+        canvas.create_text(
+            86.0,
+            42.0,
+            anchor="nw",
+            text="Credit",
+            fill="#000000",
+            font=("MontserratRoman ExtraBold", 18 * -1)
+        )
+        window.resizable(False, False)
+        window.mainloop()
+
+        # question 1
+        window.destroy()
+
         # question 2
-        print("Your credit card payments are due.")
-        x = input("Do you pay them?")
-        while x not in ["yes", "Yes", "y", "Y", "YES", "no", "No", "n", "N", "NO"]:
-            print("Invalid response. Try again.")
-            x = input()
-        if x in ["yes", "Yes", "y", "Y", "YES"]:
-            print("Great job! Having a bad credit score will affect you by having trouble taking out\n"
-                  "a credit card, car loan, or a mortgage. The other consequenses is causing higher interest\n"
-                  "rates and fewer loan options. Paying your credit is important!")
-            points += 10
-        else:
-            print("This is a bad choice. Having a bad credit score will affect you by having trouble\n"
-                  "taking out a credit card, car loan, or a mortgage. The other consequenses is causing\n"
-                  "higher interest rates and fewer loan options. Paying your credit is important!")
-            points -= 10
+
+        def o2(num):
+            canvas = Canvas(
+                window,
+                bg = "#FFFFFF",
+                height = 600,
+                width = 335,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge"
+            )
+
+            canvas.place(x = 0, y = 0)
+            if num == 2:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Great job! Having a bad credit score will affect you by having trouble taking out"
+                  "a credit card, car loan, or a mortgage. The other consequenses is causing higher interest"
+                  "rates and fewer loan options. Paying your credit is important!",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points += 10
+            
+            else:
+                canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="This is a bad choice. Having a bad credit score will affect you by having trouble"
+                  "taking out a credit card, car loan, or a mortgage. The other consequenses is causing"
+                  "higher interest rates and fewer loan options. Paying your credit is important!",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+                points -= 10
+
+
+        window = Tk()
+
+        window.geometry("335x600")
+        window.configure(bg = "#FFFFFF")
+
+
+        canvas = Canvas(
+            window,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 335,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        canvas.create_rectangle(
+            0.0,
+            430.0,
+            335.0,
+            600.0,
+            fill="#D9D9D9",
+            outline="")
+
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("button_1.png"))
+        button_1 = Button(
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o2(1),
+            relief="flat"
+        )
+        button_1.place(
+            x=42.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("button_2.png"))
+        button_2 = Button(
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            command=lambda: o2(2),
+            relief="flat"
+        )
+        button_2.place(
+            x=209.0,
+            y=474.0,
+            width=83.0,
+            height=81.0
+        )
+
+        canvas.create_text(
+                59.0,
+                47.0,
+                anchor="nw",
+                text="Your credit card payments are due. Do you pay them? 1. No 2. Yes",
+                fill="#000000",
+                font=("MontserratRoman ExtraBold", 18 * -1),
+                justify= "left",
+                width = 250
+                )
+        
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = canvas.create_image(
+            167.0,
+            358.0,
+            image=image_image_1
+        )
+
+        canvas.create_text(
+            86.0,
+            42.0,
+            anchor="nw",
+            text="Credit",
+            fill="#000000",
+            font=("MontserratRoman ExtraBold", 18 * -1)
+        )
+        window.resizable(False, False)
+        window.mainloop()
+
+        """
         # question 3
         x = input("What will the minimum payment on a $500 credit card if the minimum payment\n"
                   "percentage is 2%?")
@@ -157,7 +1028,7 @@ class Level18:
                   "credit card because if you don't, you could be charged a late fee and risk having your\n"
                   "card suspended. Also, you can miss out on credit card rewards.")
             points -= 5
-
+"""
         return points
 
 # if __name__ == '__age 18__':

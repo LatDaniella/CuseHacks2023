@@ -10,12 +10,10 @@ points = 0
 
 # Age 18
 levelObject = Level18(18)
-(levelObject.college_choice(30000))
-college_choice
-bank_loan
-bank_account
-budgeting
-credit
+#(levelObject.college_choice(30000))
+levelObject.start_screen(0)
+levelObject.college_choice(0)
+"""
 
 # set the income for the user
 print("Type in your current or starting income.")
@@ -41,4 +39,4 @@ taxes
 
 
 
-
+"""
